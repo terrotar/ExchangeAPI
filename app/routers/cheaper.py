@@ -1,15 +1,21 @@
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
-import httpx
-
-from app.routers import kraken
+from app.crud import cheaper
 
 
+# Router cheaper instance
 router = APIRouter(prefix='/cheaper',
                    tags=['Cheaper'])
 
 
+# Get cryptocoins cheaper exchange
 @router.get('/cheaper/BTC')
 async def cheaper_BTC():
-    pass
+
+    cheaper_exchange = cheaper.get_cheaper()
+    if cheaper_exchange:
+        return cheaper_exchange
+
+    raise HTTPException(status=502,
+                        detail="Couldn't access cryptocoin's API")
