@@ -5,8 +5,8 @@ from fastapi import FastAPI
 import uvicorn
 
 # Routers
-from routers import mercado_bitcoin
-from routers import kraken
+from app.routers import mercado_bitcoin
+from app.routers import kraken
 
 
 # FastAPI instance
