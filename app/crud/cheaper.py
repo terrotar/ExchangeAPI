@@ -13,9 +13,9 @@ def get_cheaper():
     mercado_bitcoin_OH = mercado_bitcoin.get_orderbook()
     if (kraken_OH and mercado_bitcoin_OH):
 
-        if (kraken_OH["BTC"]["Price(USD)"] < mercado_bitcoin_OH["BTC"]["Price(USD)"]):
+        if (kraken_OH["Kraken"]["BTC"]["Price(USD)"] < mercado_bitcoin_OH["Mercado Bitcoin"]["BTC"]["Price(USD)"]):
             cheaper = "kraken"
-        elif (kraken_OH["BTC"]["Price(USD)"] > mercado_bitcoin_OH["BTC"]["Price(USD)"]):
+        elif (kraken_OH["Kraken"]["BTC"]["Price(USD)"] > mercado_bitcoin_OH["Mercado Bitcoin"]["BTC"]["Price(USD)"]):
             cheaper = "Mercado Bitcoin"
         else:
             cheaper = "Same value"
@@ -23,25 +23,25 @@ def get_cheaper():
         return {
             'BTC': {
                 'USD': {
-                    'Kraken': kraken_OH["BTC"]["Price(USD)"],
-                    'Mercado Bitcoin': mercado_bitcoin_OH["BTC"]["Price(USD)"],
+                    'Kraken': kraken_OH["Kraken"]["BTC"]["Price(USD)"],
+                    'Mercado Bitcoin': mercado_bitcoin_OH["Mercado Bitcoin"]["BTC"]["Price(USD)"],
                     'Cheaper': cheaper
                 },
                 'BRL': {
-                    'Kraken': kraken_OH["BTC"]["Price(BRL)"],
-                    'Mercado Bitcoin': mercado_bitcoin_OH["BTC"]["Price(BRL)"],
+                    'Kraken': kraken_OH["Kraken"]["BTC"]["Price(BRL)"],
+                    'Mercado Bitcoin': mercado_bitcoin_OH["Mercado Bitcoin"]["BTC"]["Price(BRL)"],
                     'Cheaper': cheaper
                 }
             },
             'ETH': {
                 'USD': {
-                    'Kraken': kraken_OH["ETH"]["Price(USD)"],
-                    'Mercado Bitcoin': mercado_bitcoin_OH["ETH"]["Price(USD)"],
+                    'Kraken': kraken_OH["Kraken"]["ETH"]["Price(USD)"],
+                    'Mercado Bitcoin': mercado_bitcoin_OH["Mercado Bitcoin"]["ETH"]["Price(USD)"],
                     'Cheaper': cheaper
                 },
                 'BRL': {
-                    'Kraken': kraken_OH["ETH"]["Price(BRL)"],
-                    'Mercado Bitcoin': mercado_bitcoin_OH["ETH"]["Price(BRL)"],
+                    'Kraken': kraken_OH["Kraken"]["ETH"]["Price(BRL)"],
+                    'Mercado Bitcoin': mercado_bitcoin_OH["Mercado Bitcoin"]["ETH"]["Price(BRL)"],
                     'Cheaper': cheaper
                 }
             }
